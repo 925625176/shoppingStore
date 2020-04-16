@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.Orderdetail1Mapper" >
+  <resultMap id="BaseResultMap" type="entity.Orderdetail1" >
+    <id column="od_id" property="odId" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="orderbh" property="orderbh" jdbcType="VARCHAR" />
+    <result column="ordertime" property="ordertime" jdbcType="VARCHAR" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_price" property="pPrice" jdbcType="DOUBLE" />
+    <result column="od_num" property="odNum" jdbcType="INTEGER" />
+    <result column="wj" property="wj" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    od_id, userid, p_id, orderbh, ordertime, p_name, p_price, od_num,wj
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderdetail1
+    where od_id = #{odId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderdetail1
+    where od_id = #{odId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.Orderdetail1" useGeneratedKeys="true" keyProperty="odId">
+    insert into orderdetail1 (od_id, userid, p_id, 
+      orderbh, ordertime, p_name, 
+      p_price, od_num,wj)
+    values (#{odId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER}, 
+      #{orderbh,jdbcType=VARCHAR}, #{ordertime,jdbcType=VARCHAR}, #{pName,jdbcType=VARCHAR}, 
+      #{pPrice,jdbcType=DOUBLE}, #{odNum,jdbcType=INTEGER},#{wj,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.Orderdetail1" >
+    insert into orderdetail1
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="odId != null" >
+        od_id,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="orderbh != null" >
+        orderbh,
+      </if>
+      <if test="ordertime != null" >
+        ordertime,
+      </if>
+      <if test="pName != null" >
+        p_name,
+      </if>
+      <if test="pPrice != null" >
+        p_price,
+      </if>
+      <if test="odNum != null" >
+        od_num,
+      </if>
+      <if test="wj != null" >
+        wj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="odId != null" >
+        #{odId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="orderbh != null" >
+        #{orderbh,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        #{ordertime,jdbcType=VARCHAR},
+      </if>
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pPrice != null" >
+        #{pPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="odNum != null" >
+        #{odNum,jdbcType=INTEGER},
+      </if>
+      <if test="wj != null" >
+        #{wj,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.Orderdetail1" >
+    update orderdetail1
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        p_id = #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="orderbh != null" >
+        orderbh = #{orderbh,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        ordertime = #{ordertime,jdbcType=VARCHAR},
+      </if>
+      <if test="pName != null" >
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pPrice != null" >
+        p_price = #{pPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="odNum != null" >
+        od_num = #{odNum,jdbcType=INTEGER},
+      </if>
+      <if test="wj != null" >
+        od_num = #{wj,jdbcType=INTEGER},
+      </if>
+    </set>
+    where od_id = #{odId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Orderdetail1" >
+    update orderdetail1
+    set userid = #{userid,jdbcType=INTEGER},
+      p_id = #{pId,jdbcType=INTEGER},
+      orderbh = #{orderbh,jdbcType=VARCHAR},
+      ordertime = #{ordertime,jdbcType=VARCHAR},
+      p_name = #{pName,jdbcType=VARCHAR},
+      p_price = #{pPrice,jdbcType=DOUBLE},
+      od_num = #{odNum,jdbcType=INTEGER}
+      wj = #{wj,jdbcType=INTEGER}
+    where od_id = #{odId,jdbcType=INTEGER}
+  </update>
+</mapper>
